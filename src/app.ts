@@ -31,6 +31,7 @@ export async function main() {
   app.use(router.routes())
   app.use(router.allowedMethods())
   app.listen(1340)
+  // Report ok
   console.log('Koa application is up and running on port 1340')
 }
 main()
