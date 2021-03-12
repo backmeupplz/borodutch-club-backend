@@ -7,9 +7,11 @@ export class User {
   name: string
   @prop({ required: true, index: true })
   telegramId: number
-
   @prop({ required: true, index: true, unique: true })
   token: string
+
+  @prop({ required: false, unique: true })
+  subscriptionId?: string
 
   stripped() {
     const stripFields = ['createdAt', '__v']
