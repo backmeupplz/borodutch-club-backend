@@ -1,11 +1,14 @@
 import * as mongoose from 'mongoose'
 
 export function runMongo(mongoUrl = process.env.MONGO) {
-  mongoose.connect(mongoUrl, {
+  return mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
   })
+}
 
-  mongoose.set('useCreateIndex', true)
-  mongoose.set('useFindAndModify', false)
+export function stopMongo() {
+  return mongoose.disconnect()
 }

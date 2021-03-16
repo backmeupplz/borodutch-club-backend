@@ -1,15 +1,30 @@
 const request = require('supertest')
-import app from '@/app'
+import { app } from '@/app'
 import { MongoMemoryServer } from 'mongodb-memory-server'
-import { runMongo } from '@/models/index'
+import { runMongo, stopMongo } from '@/models/index'
+import { Server } from 'http'
+import { dropMongo, startKoa, stopServer } from '../testUtils'
 
-const mongoServer = new MongoMemoryServer()
+describe('Public endpoint', () => {
+  let server: Server
 
-beforeEach(async () => {
-  runMongo(await mongoServer.getUri())
-})
+  beforeAll(async () => {
+    const mongoServer = new MongoMemoryServer()
+    await runMongo(await mongoServer.getUri())
+    server = await startKoa(app)
+  })
 
-test('public root route test', async () => {
-  const response = await request(app.callback()).get('/')
-  expect(response.body).toBe('All your club belong to us')
+  beforeEach(async () => {
+    await dropMongo()
+  })
+
+  afterAll(async () => {
+    await stopMongo()
+    await stopServer(server)
+  })
+
+  it('should be public root route test', async () => {
+    const response = await request(server).get('/')
+    expect(response.text).toBe('All your club belong to us')
+  })
 })
