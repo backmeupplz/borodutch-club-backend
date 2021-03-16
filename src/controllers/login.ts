@@ -4,7 +4,7 @@ import { Controller, Ctx, Post } from 'koa-ts-controllers'
 import { verifyTelegramPayload } from '@/helpers/verifyTelegramPayload'
 
 @Controller('/login')
-export default class {
+export default class LoginController {
   @Post('/telegram')
   async telegram(@Ctx() ctx: Context) {
     const data = ctx.request.body
