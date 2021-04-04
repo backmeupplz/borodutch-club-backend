@@ -1,9 +1,9 @@
 {
-  "name": "backend-starter",
+  "name": "borodutch-club-backend",
   "version": "1.0.0",
-  "description": "Backend starter template",
+  "description": "Backend for Borodutch Club",
   "main": "dist/server.js",
-  "repository": "https://github.com/backmeupplz/backend-starter",
+  "repository": "https://github.com/backmeupplz/borodutch-club-backend",
   "author": "backmeupplz <backmeupplz@gmail.com>",
   "license": "MIT",
   "private": false,

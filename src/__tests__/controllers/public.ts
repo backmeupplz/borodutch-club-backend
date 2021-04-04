@@ -3,7 +3,7 @@ import { app } from '@/app'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { runMongo, stopMongo } from '@/models/index'
 import { Server } from 'http'
-import { dropMongo, startKoa, stopServer } from '../testUtils'
+import { dropMongo, startKoa, stopServer } from '@/__tests__/testUtils'
 
 describe('Public endpoint', () => {
   let server: Server
@@ -23,7 +23,7 @@ describe('Public endpoint', () => {
     await stopServer(server)
   })
 
-  it('should be public root route test', async () => {
+  it('should return the cryptic message', async () => {
     const response = await request(server).get('/')
     expect(response.text).toBe('All your club belong to us')
   })
