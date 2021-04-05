@@ -19,7 +19,6 @@ export const app = new Koa()
       disableVersioning: true,
     })
     app.use(cors({ origin: '*' }))
-    app.use(cors({ origin: '*' }))
     app.use(bodyParser())
     app.use(router.routes())
     app.use(router.allowedMethods())

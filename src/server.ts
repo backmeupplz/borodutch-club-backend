@@ -18,5 +18,5 @@ runMongo().then(() => {
 // Start rest
 const port = +process.env.PORT || 1337
 app.listen(port).on('listening', () => {
-  console.log(`HTTP is listening on {port}`)
+  console.log(`HTTP is listening on ${port}`)
 })
