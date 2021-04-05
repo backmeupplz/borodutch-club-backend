@@ -15,7 +15,10 @@ bot.on('new_chat_members', async (ctx) => {
 
 Обязательно ознакомься с <a href="https://telegra.ph/Glavnyj-dokument-Borodach-Kluba-04-05">главным документом Клуба</a>! Там описано, что нужно делать и как себя вести в этом сообществе.
 
-А пока что — не забудь представиться с хештегом #интро.`
+А пока что — не забудь представиться с хештегом #интро.`,
+        {
+          disable_web_page_preview: true,
+        }
       )
     } else {
       await kick(member.id)
