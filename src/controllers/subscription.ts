@@ -5,6 +5,8 @@ import { stripe } from '@/helpers/stripe'
 import { UserModel } from '@/models/user'
 import { kick } from '@/telegram/bot'
 
+const coupon = process.env.STRIPE_FREE_DISCOUNT
+
 @Controller('/subscription')
 export default class SubscriptionController {
   @Get('/session')
@@ -17,6 +19,7 @@ export default class SubscriptionController {
       cancel_url: `${process.env.FRONTEND_URL}`,
       client_reference_id: ctx.state.user.telegramId,
       locale: 'ru',
+      discounts: ctx.state.user.free ? [{ coupon }] : undefined,
     })
     return {
       session: session.id,

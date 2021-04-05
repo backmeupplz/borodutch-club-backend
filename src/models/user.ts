@@ -10,8 +10,10 @@ export class User {
   @prop({ required: true, index: true, unique: true })
   token: string
 
-  @prop({ required: false, unique: true })
+  @prop({ unique: true })
   subscriptionId?: string
+  @prop({ required: true, default: false })
+  free: boolean
 
   stripped() {
     const stripFields = ['createdAt', '__v']

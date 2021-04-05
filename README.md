@@ -14,17 +14,18 @@ And you should be good to go! Feel free to fork and submit pull requests.
 
 ## Environment variables
 
-| Name                    | Description                   |
-| ----------------------- | ----------------------------- |
-| `MONGO`                 | URL of the mongo database     |
-| `JWT`                   | secret for JWT                |
-| `TELEGRAM_LOGIN_TOKEN`  | Telegram login bot            |
-| `STRIPE_SECRET`         | Stripe secret                 |
-| `FRONTEND_URL`          | URL of the frontend app       |
-| `STRIPE_PRICE`          | Stripe price plan             |
-| `STRIPE_WEBHOOK_SECRET` | Stripe webhook secret         |
-| `TELEGRAM_GROUP`        | ID of the Telegram group      |
-| `TELEGRAM_ADMIN`        | ID of the Telegram admin user |
+| Name                    | Description                       |
+| ----------------------- | --------------------------------- |
+| `MONGO`                 | URL of the mongo database         |
+| `JWT`                   | secret for JWT                    |
+| `TELEGRAM_LOGIN_TOKEN`  | Telegram login bot                |
+| `STRIPE_SECRET`         | Stripe secret                     |
+| `FRONTEND_URL`          | URL of the frontend app           |
+| `STRIPE_PRICE`          | Stripe price plan                 |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook secret             |
+| `TELEGRAM_GROUP`        | ID of the Telegram group          |
+| `TELEGRAM_ADMIN`        | ID of the Telegram admin user     |
+| `STRIPE_FREE_DISCOUNT`  | ID of the free discount on Stripe |
 
 Also, please, consider looking at `.env.sample`.
 
