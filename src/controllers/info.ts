@@ -3,8 +3,8 @@ import { Controller, Get, Ctx, Flow } from 'koa-ts-controllers'
 import { authenticate } from '@/middlefares/authenticate'
 import { User } from '@/models/user'
 
-@Controller('/login')
-export default class LoginController {
+@Controller('/info')
+export default class InfoController {
   @Get('/')
   @Flow(authenticate)
   async telegram(@Ctx() ctx: Context) {
