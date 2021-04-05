@@ -11,7 +11,7 @@ bot.on('new_chat_members', async (ctx) => {
     if (isSubscribed) {
       await new MemberModel({ telegramId: member.id }).save()
       await ctx.replyWithHTML(
-        `Привет, <a href="tg://user?id=${member.id}"/>${member.first_name}</a>! Добро пожаловать в Бородач Клуб!
+        `Привет, <a href="tg://user?id=${member.id}">${member.first_name}</a>! Добро пожаловать в Бородач Клуб!
 
 Обязательно ознакомься с <a href="https://telegra.ph/Glavnyj-dokument-Borodach-Kluba-04-05">главным документом Клуба</a>! Там описано, что нужно делать и как себя вести в этом сообществе.
 
