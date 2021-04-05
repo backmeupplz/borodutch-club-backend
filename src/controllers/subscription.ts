@@ -3,6 +3,7 @@ import { Controller, Get, Ctx, Flow, Post } from 'koa-ts-controllers'
 import { authenticate } from '@/middlefares/authenticate'
 import { stripe } from '@/helpers/stripe'
 import { UserModel } from '@/models/user'
+import { kick } from '@/telegram/bot'
 
 @Controller('/subscription')
 export default class SubscriptionController {
@@ -65,6 +66,7 @@ export default class SubscriptionController {
           }
           user.subscriptionId = undefined
           await user.save()
+          await kick(user.telegramId)
           break
         }
         case 'checkout.session.completed': {

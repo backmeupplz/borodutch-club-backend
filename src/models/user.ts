@@ -47,3 +47,10 @@ export async function getOrCreateUser(loginOptions: LoginOptions) {
   }
   return user
 }
+
+export async function checkIfSubscribed(telegramId: number) {
+  const user = await UserModel.findOne({
+    telegramId,
+  })
+  return !!user?.subscriptionId
+}
