@@ -25,6 +25,11 @@ bot.on('new_chat_members', async (ctx) => {
     }
   }
 })
+bot.command(['start', 'help'], (ctx) => {
+  return ctx.reply(
+    'Привет! Похоже, ты пытаешься зайти через Телеграм на club.borodutch.com. Этот бот тебе не особо поможет, заходить нужно именно на club.borodutch.com. Если есть какие вопросы — задавай их @borodutch. Удачи!'
+  )
+})
 bot.launch().then(() => console.log('Telegram bot launched'))
 
 let checking = false
