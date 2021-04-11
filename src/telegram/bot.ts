@@ -30,6 +30,7 @@ bot.command(['start', 'help'], (ctx) => {
     'Привет! Похоже, ты пытаешься зайти через Телеграм на club.borodutch.com. Этот бот тебе не особо поможет, заходить нужно именно на club.borodutch.com. Если есть какие вопросы — задавай их @borodutch. Удачи!'
   )
 })
+bot.catch(console.error)
 bot.launch().then(() => console.log('Telegram bot launched'))
 
 let checking = false
