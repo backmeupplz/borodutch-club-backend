@@ -20,6 +20,7 @@ export default class SubscriptionController {
       client_reference_id: ctx.state.user.telegramId,
       locale: 'ru',
       discounts: ctx.state.user.free ? [{ coupon }] : undefined,
+      allow_promotion_codes: true,
     })
     return {
       session: session.id,
