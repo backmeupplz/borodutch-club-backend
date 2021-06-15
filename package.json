@@ -47,6 +47,7 @@
     "lodash": "^4.17.21",
     "module-alias": "^2.2.2",
     "mongoose": "5.10.18",
+    "random-words": "^1.1.1",
     "stripe": "^8.142.0",
     "telegraf": "^4.3.0",
     "typescript": "^4.2.3"

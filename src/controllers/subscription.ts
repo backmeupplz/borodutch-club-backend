@@ -12,6 +12,9 @@ export default class SubscriptionController {
   @Get('/session')
   @Flow(authenticate)
   async session(@Ctx() ctx: Context) {
+    if (!ctx.state.user.inviter) {
+      return ctx.throw(403)
+    }
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       subscription_data: { items: [{ plan: process.env.STRIPE_PRICE }] },

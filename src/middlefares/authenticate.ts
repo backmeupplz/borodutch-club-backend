@@ -27,7 +27,9 @@ export async function getUserFromToken(token: string) {
     throw new Error(payload)
   }
   if (payload.telegramId) {
-    user = await UserModel.findOne({ telegramId: payload.telegramId })
+    user = await UserModel.findOne({ telegramId: payload.telegramId }).populate(
+      'inviter'
+    )
   }
   return user
 }

@@ -1,5 +1,5 @@
 import { sign } from '@/helpers/jwt'
-import { prop, getModelForClass, DocumentType } from '@typegoose/typegoose'
+import { prop, getModelForClass, DocumentType, Ref } from '@typegoose/typegoose'
 import { omit } from 'lodash'
 
 export class User {
@@ -14,6 +14,10 @@ export class User {
   subscriptionId?: string
   @prop({ required: true, default: false })
   free: boolean
+  @prop({ ref: () => User })
+  inviter?: Ref<User>
+  @prop({ unique: true })
+  inviteCode?: string
 
   stripped() {
     const stripFields = ['createdAt', '__v']
