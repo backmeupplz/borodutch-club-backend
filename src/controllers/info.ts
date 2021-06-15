@@ -4,7 +4,7 @@ import { Controller, Get, Ctx, Flow } from 'koa-ts-controllers'
 import { authenticate } from '@/middlefares/authenticate'
 import { User } from '@/models/user'
 import { getChatInviteLink } from '@/telegram/bot'
-import randomWords from 'random-words'
+const randomWords = require('random-words')
 
 @Controller('/info')
 export default class InfoController {
