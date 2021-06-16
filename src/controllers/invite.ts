@@ -16,6 +16,9 @@ export default class InfoController {
     if (!inviter) {
       return ctx.throw(404)
     }
+    if (!inviter.subscriptionId) {
+      return ctx.throw(403)
+    }
     const user = ctx.state.user as DocumentType<User>
     user.inviter = inviter
     await user.save()
