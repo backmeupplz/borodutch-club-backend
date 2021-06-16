@@ -4,6 +4,7 @@ import { Context } from 'koa'
 import { authenticate } from '@/middlefares/authenticate'
 import { User } from '@/models/user'
 import { report } from '@/telegram/bot'
+import { validateEmail } from '@/helpers/validateEmail'
 
 @Controller('/waitlist')
 export default class WaitlistController {
