@@ -5,7 +5,7 @@ import { authenticate } from '@/middlefares/authenticate'
 import { User, UserModel } from '@/models/user'
 
 @Controller('/invite')
-export default class InfoController {
+export default class InviteController {
   @Post('/code')
   @Flow(authenticate)
   async postInviteCode(
