@@ -10,7 +10,10 @@ const randomWords = require('random-words')
 export default class InfoController {
   @Get('/link')
   @Flow(authenticate)
-  async link() {
+  async link(@Ctx() ctx: Context) {
+    if (!ctx.state.user.subscriptionId) {
+      return ctx.throw(403)
+    }
     const link = await getChatInviteLink()
     return { link }
   }
