@@ -23,5 +23,6 @@ export default class InviteController {
     user.inviter = inviter
     await user.save()
     ctx.status = 200
+    return { ok: true }
   }
 }
