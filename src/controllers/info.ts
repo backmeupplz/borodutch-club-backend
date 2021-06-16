@@ -2,7 +2,7 @@ import { DocumentType } from '@typegoose/typegoose'
 import { Context } from 'koa'
 import { Controller, Get, Ctx, Flow } from 'koa-ts-controllers'
 import { authenticate } from '@/middlefares/authenticate'
-import { User } from '@/models/user'
+import { User, UserModel } from '@/models/user'
 import { getChatInviteLink } from '@/telegram/bot'
 const randomWords = require('random-words')
 
@@ -27,12 +27,16 @@ export default class InfoController {
       })[0]
       await user.save()
     }
+    let inviter: User
+    if (user.inviter) {
+      inviter = await UserModel.findById(user.inviter)
+    }
 
     return {
       name: user.name,
       telegramId: user.telegramId,
       subscriptionId: user.subscriptionId,
-      inviterName: user.inviter ? (user.inviter as User).name : undefined,
+      inviterName: inviter ? inviter.name : undefined,
       inviteCode: user.inviteCode,
     }
   }

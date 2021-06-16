@@ -11,7 +11,7 @@ export async function authenticate(ctx: Context, next: Function) {
     }
     const user = await getUserFromToken(token)
     if (!user) {
-      return ctx.throw(403, 'No user found')
+      return ctx.throw(404, 'No user found')
     }
     ctx.state.user = user
   } catch (err) {
@@ -27,9 +27,7 @@ export async function getUserFromToken(token: string) {
     throw new Error(payload)
   }
   if (payload.telegramId) {
-    user = await UserModel.findOne({ telegramId: payload.telegramId }).populate(
-      'inviter'
-    )
+    user = await UserModel.findOne({ telegramId: payload.telegramId })
   }
   return user
 }
