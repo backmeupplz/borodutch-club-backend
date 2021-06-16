@@ -18,6 +18,8 @@ export class User {
   inviter?: Ref<User>
   @prop({ unique: true })
   inviteCode?: string
+  @prop()
+  waitlistEmail?: string
 
   stripped() {
     const stripFields = ['createdAt', '__v']

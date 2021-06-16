@@ -2,28 +2,24 @@ import { DocumentType } from '@typegoose/typegoose'
 import { Controller, Post, Body, Flow, Ctx } from 'koa-ts-controllers'
 import { Context } from 'koa'
 import { authenticate } from '@/middlefares/authenticate'
-import { User, UserModel } from '@/models/user'
+import { User } from '@/models/user'
 import { report } from '@/telegram/bot'
 
-@Controller('/invite')
-export default class InviteController {
-  @Post('/code')
+@Controller('/waitlist')
+export default class WaitlistController {
+  @Post('/')
   @Flow(authenticate)
   async postInviteCode(
     @Ctx() ctx: Context,
-    @Body('inviteCode') inviteCode: string
+    @Body('email') waitlistEmail: string
   ) {
-    const inviter = await UserModel.findOne({ inviteCode })
-    if (!inviter) {
-      return ctx.throw(404)
-    }
-    if (!inviter.subscriptionId) {
+    if (!validateEmail(waitlistEmail)) {
       return ctx.throw(403)
     }
     const user = ctx.state.user as DocumentType<User>
-    user.inviter = inviter
+    user.waitlistEmail = waitlistEmail
     await user.save()
-    report(`${user.name} got invited by ${inviter.name}`)
+    report(`${user.name} joined waitlist with ${waitlistEmail}`)
     ctx.status = 200
     return { ok: true }
   }

@@ -77,3 +77,11 @@ export async function kick(telegramId: number) {
     // Do nothing
   }
 }
+
+export async function report(message: string) {
+  try {
+    await bot.telegram.sendMessage(+process.env.TELEGRAM_ADMIN, message)
+  } catch (err) {
+    // Do nothing
+  }
+}

@@ -38,6 +38,7 @@ export default class InfoController {
       subscriptionId: user.subscriptionId,
       inviterName: inviter ? inviter.name : undefined,
       inviteCode: user.inviteCode,
+      waitlistEmail: user.waitlistEmail,
     }
   }
 }
