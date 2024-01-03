@@ -11,11 +11,11 @@ bot.on('new_chat_members', async (ctx) => {
     if (isSubscribed) {
       await new MemberModel({ telegramId: member.id }).save()
       await ctx.replyWithHTML(
-        `Привет, <a href="tg://user?id=${member.id}">${member.first_name}</a>! Добро пожаловать в Бородач Клуб!
+        `Hello, <a href="tg://user?id=${member.id}">${member.first_name}</a>! Welcome to the Borodutch Club!
 
-Обязательно ознакомься с <a href="https://telegra.ph/Glavnyj-dokument-Borodach-Kluba-04-05">главным документом Клуба</a>! Там описано, что нужно делать и как себя вести в этом сообществе.
-
-А пока что — не забудь представиться с хештегом #интро. Если хочешь встречаться с членами Клуба в оффлайне, оставь свой город с хештегом #geo.`,
+Be sure to familiarize yourself with the <a href="https://telegra.ph/The-Main-Document-of-Borodutch-Club-01-03">main document of the Club</a>! It describes what to do and how to behave in this community.
+        
+And for now — don’t forget to introduce yourself with the hashtag #intro. If you want to meet with Club members offline, leave your city with the hashtag #geo.`,
         {
           disable_web_page_preview: true,
         }
@@ -27,7 +27,7 @@ bot.on('new_chat_members', async (ctx) => {
 })
 bot.command(['start', 'help'], (ctx) => {
   return ctx.reply(
-    'Привет! Похоже, ты пытаешься зайти через Телеграм на club.borodutch.com. Этот бот тебе не особо поможет, заходить нужно именно на club.borodutch.com. Если есть какие вопросы — задавай их @borodutch. Удачи!'
+    'Hello! It seems you are trying to access club.borodutch.com through Telegram. This bot won’t be of much help, you need to visit club.borodutch.com directly. If you have any questions, contact @borodutch. Good luck!'
   )
 })
 bot.catch(console.error)
