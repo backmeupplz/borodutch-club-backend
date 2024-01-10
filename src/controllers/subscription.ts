@@ -21,7 +21,6 @@ export default class SubscriptionController {
       success_url: `${process.env.FRONTEND_URL}`,
       cancel_url: `${process.env.FRONTEND_URL}`,
       client_reference_id: ctx.state.user.telegramId,
-      locale: 'ru',
       discounts: ctx.state.user.free ? [{ coupon }] : undefined,
       allow_promotion_codes: true,
     })
